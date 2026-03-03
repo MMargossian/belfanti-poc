@@ -1,0 +1,177 @@
+import {
+  Mail, User, Cog, Search, CheckCircle2, ClipboardList, FolderOpen,
+  Send, Inbox, Target, DollarSign, FileText, BarChart3, ShieldCheck,
+  MailCheck, Package, FileSpreadsheet, FileDown, MailPlus, MessageSquare,
+  Truck, Factory, Printer, FolderPlus, Calculator,
+  type LucideIcon,
+} from "lucide-react";
+
+export const TOOL_ICONS: Record<string, LucideIcon> = {
+  parse_rfq_email: Mail,
+  lookup_customer: User,
+  extract_part_specs: Cog,
+  check_existing_part: Search,
+  validate_part_specs: CheckCircle2,
+  log_to_tracking_sheet: ClipboardList,
+  update_tracking_status: ClipboardList,
+  store_cad_files: FolderOpen,
+  get_tracking_status: ClipboardList,
+  search_material_vendors: Search,
+  send_vendor_rfqs: Send,
+  evaluate_vendor_bids: Inbox,
+  select_vendor: Target,
+  calculate_part_cost: DollarSign,
+  build_quote: FileText,
+  adjust_margin: BarChart3,
+  approval_gate_quote_review: ShieldCheck,
+  approval_gate_email_review: MailCheck,
+  check_approval_status: CheckCircle2,
+  qb_create_product: Package,
+  qb_create_estimate: FileSpreadsheet,
+  qb_generate_pdf: FileDown,
+  qb_email_estimate: MailPlus,
+  qb_close_quote: MailCheck,
+  record_customer_response: MessageSquare,
+  check_quote_status: BarChart3,
+  create_purchase_order: FileText,
+  create_sales_order: FileText,
+  send_po_to_vendor: Send,
+  send_order_confirmation: MailPlus,
+  confirm_delivery: Truck,
+  create_work_order: Factory,
+  create_packing_slip: ClipboardList,
+  generate_print_pdfs: Printer,
+  create_fusion360_folder: FolderPlus,
+};
+
+export const TOOL_DESCRIPTIONS: Record<string, string> = {
+  parse_rfq_email: "Parsing incoming email",
+  lookup_customer: "Looking up customer",
+  extract_part_specs: "Extracting part specifications",
+  check_existing_part: "Checking existing parts",
+  validate_part_specs: "Validating part requirements",
+  log_to_tracking_sheet: "Logging to tracking sheet",
+  update_tracking_status: "Updating tracking status",
+  store_cad_files: "Storing CAD files to Drive",
+  get_tracking_status: "Getting tracking status",
+  search_material_vendors: "Searching vendor database",
+  send_vendor_rfqs: "Sending RFQs to vendors",
+  evaluate_vendor_bids: "Evaluating vendor bids",
+  select_vendor: "Selecting best vendor",
+  calculate_part_cost: "Calculating cost breakdown",
+  build_quote: "Building customer quote",
+  adjust_margin: "Adjusting margin",
+  approval_gate_quote_review: "Requesting quote approval",
+  approval_gate_email_review: "Requesting email approval",
+  check_approval_status: "Checking approval status",
+  qb_create_product: "Creating QuickBooks product",
+  qb_create_estimate: "Creating QuickBooks estimate",
+  qb_generate_pdf: "Generating estimate PDF",
+  qb_email_estimate: "Emailing estimate",
+  qb_close_quote: "Closing quote",
+  record_customer_response: "Recording customer response",
+  check_quote_status: "Checking quote status",
+  create_purchase_order: "Creating purchase order",
+  create_sales_order: "Creating sales order",
+  send_po_to_vendor: "Sending PO to vendor",
+  send_order_confirmation: "Sending order confirmation",
+  confirm_delivery: "Confirming delivery",
+  create_work_order: "Generating work order",
+  create_packing_slip: "Creating packing slip",
+  generate_print_pdfs: "Generating print PDFs",
+  create_fusion360_folder: "Creating Fusion 360 folder",
+};
+
+export const STAGE_LABELS: Record<string, string> = {
+  rfq_received: "RFQ Received",
+  email_parsed: "Email Parsed",
+  customer_identified: "Customer ID'd",
+  parts_extracted: "Parts Extracted",
+  parts_validated: "Parts Validated",
+  tracking_logged: "Tracking Logged",
+  cad_files_stored: "CAD Stored",
+  vendor_search: "Vendor Search",
+  vendor_rfqs_sent: "RFQs Sent",
+  vendor_bids_received: "Bids Received",
+  vendor_selected: "Vendor Selected",
+  cost_calculated: "Cost Calculated",
+  quote_built: "Quote Built",
+  quote_review_gate: "Quote Review",
+  qb_product_created: "QB Product",
+  qb_estimate_created: "QB Estimate",
+  quote_sent_to_customer: "Quote Sent",
+  customer_response_received: "Response Received",
+  po_created: "PO Created",
+  work_order_created: "Work Order",
+};
+
+export const PIPELINE_PHASES = [
+  { label: "Intake", stages: ["rfq_received", "email_parsed", "customer_identified"] },
+  { label: "Extraction", stages: ["parts_extracted", "parts_validated"] },
+  { label: "Tracking", stages: ["tracking_logged", "cad_files_stored"] },
+  { label: "Sourcing", stages: ["vendor_search", "vendor_rfqs_sent", "vendor_bids_received", "vendor_selected"] },
+  { label: "Quoting", stages: ["cost_calculated", "quote_built", "quote_review_gate"] },
+  { label: "QuickBooks", stages: ["qb_product_created", "qb_estimate_created", "quote_sent_to_customer"] },
+  { label: "Response", stages: ["customer_response_received"] },
+  { label: "Fulfillment", stages: ["po_created", "work_order_created"] },
+];
+
+export const PHASE_ICONS: Record<string, LucideIcon> = {
+  Intake: Mail,
+  Extraction: Cog,
+  Tracking: ClipboardList,
+  Sourcing: Search,
+  Quoting: Calculator,
+  QuickBooks: FileSpreadsheet,
+  Response: MessageSquare,
+  Fulfillment: Truck,
+};
+
+export const MODULE_ICONS: Record<string, LucideIcon> = {
+  "Intake & Extraction": Mail,
+  "Tracking & Files": ClipboardList,
+  "Sourcing & Quoting": DollarSign,
+  Approval: ShieldCheck,
+  Fulfillment: Truck,
+};
+
+export const MODULE_GROUPS = [
+  {
+    label: "Intake & Extraction",
+    modules: ["email_intake", "quote_extraction"],
+  },
+  {
+    label: "Tracking & Files",
+    modules: ["tracking"],
+  },
+  {
+    label: "Sourcing & Quoting",
+    modules: ["material_rfq", "quote_preparation", "quickbooks"],
+  },
+  {
+    label: "Approval",
+    modules: ["approval_gates"],
+  },
+  {
+    label: "Fulfillment",
+    modules: ["customer_response", "purchase_order", "work_order"],
+  },
+];
+
+export const DEMO_RFQS = [
+  {
+    label: "Simple -- Aluminum Bracket",
+    description: "Single part, 3-axis mill, qty 50",
+    index: 0,
+  },
+  {
+    label: "Medium -- Shaft + Housing",
+    description: "Two parts, lathe + mill + grinder, qty 25",
+    index: 1,
+  },
+  {
+    label: "Complex -- Medical Device",
+    description: "Three parts, titanium + stainless + PEEK, rush order",
+    index: 2,
+  },
+];
